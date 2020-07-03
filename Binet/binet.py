@@ -15,24 +15,19 @@ def binet(n):
 
 
 def complex_plot_(x, y, xlabel="x", ylabel="y", addtitle=" "):
-	plt.figure(figsize=(5, 5))
+	plt.figure(figsize=(3, 6))
 	
-	plt.subplot(221)
-	plt.plot(x, np.real(y), linewidth=2)
+	plt.subplot(211)
+	plt.plot(x, np.real(y), linewidth=2, color='tab:blue', label=r"Re("+ylabel+")")
+	plt.plot(x, np.imag(y), linewidth=2, color='tab:red', label=r"Im("+ylabel+")")
 	plt.xlabel(xlabel)
-	plt.ylabel(r"Re("+ylabel+")")
+	plt.ylabel(r"Re, Im("+ylabel+")")
 	plt.title(" ")
 	plt.grid(which='major', axis='both')
+	plt.legend()
 
-	plt.subplot(222)
-	plt.plot(x, np.imag(y), linewidth=2)
-	plt.xlabel(xlabel)
-	plt.ylabel(r"Im("+ylabel+")")
-	plt.title(" ")
-	plt.grid(which='major', axis='both')
-
-	plt.subplot(223)
-	plt.plot(np.real(y), np.imag(y), linewidth=2)
+	plt.subplot(212)
+	plt.plot(np.real(y), np.imag(y), color='tab:green', linewidth=2)
 	plt.xlabel(r"Re("+ylabel+")")
 	plt.ylabel(r"Im("+ylabel+")")
 	plt.title(" ")
@@ -46,13 +41,13 @@ def complex_plot_2d_(X, Y, Z):
 	sk = 1
 	fig = plt.figure()
 	ax1 = fig.add_subplot(211, projection='3d')
-	ax1.plot_surface(X[::sk, ::sk], Y[::sk, ::sk], Z[::sk, ::sk].real)
+	ax1.plot_surface(X[::sk, ::sk], Y[::sk, ::sk], Z[::sk, ::sk].real, color='tab:blue')
 	ax1.set_xlabel(r"$x$")
 	ax1.set_ylabel(r"$iy$")
 	ax1.set_zlabel(r"Re($f(x+iy)$)")
 
 	ax2 = fig.add_subplot(212, projection='3d')
-	ax2.plot_surface(X[::sk, ::sk], Y[::sk, ::sk], Z[::sk, ::sk].imag)
+	ax2.plot_surface(X[::sk, ::sk], Y[::sk, ::sk], Z[::sk, ::sk].imag, color='tab:red')
 	ax2.set_xlabel(r"$x$")
 	ax2.set_ylabel(r"$iy$")
 	ax2.set_zlabel(r"Im($f(x+iy)$)")
