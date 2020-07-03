@@ -60,7 +60,7 @@ def complex_plot_2d_(X, Y, Z):
 	plt.tight_layout()
 
 if __name__=="__main__":
-	print("Input the upper bound of Benet numbers, n: ")
+	print("Input the upper bound of Binet numbers, n: ")
 	num = float(input())
 
 	####################################################
