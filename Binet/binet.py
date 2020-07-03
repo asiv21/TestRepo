@@ -12,30 +12,49 @@ def binet(n):
 
 
 def complex_plot_(x, y, xlabel="x", ylabel="y", addtitle=" "):
-	plt.figure(figsize=(10, 5))
-	plt.subplot(121)
-	plt.plot(x, np.real(y))
+	plt.figure(figsize=(5, 5))
+	
+	plt.subplot(221)
+	plt.plot(x, np.real(y), linewidth=2)
 	plt.xlabel(xlabel)
 	plt.ylabel(r"Re("+ylabel+")")
-	plt.title("Real part")
+	plt.title(" ")
+	plt.grid(which='major', axis='both')
 
-	plt.subplot(122)
-	plt.plot(x, np.imag(y))
+	plt.subplot(222)
+	plt.plot(x, np.imag(y), linewidth=2)
 	plt.xlabel(xlabel)
 	plt.ylabel(r"Im("+ylabel+")")
-	plt.title("Imaginary part")
+	plt.title(" ")
+	plt.grid(which='major', axis='both')
+
+	plt.subplot(223)
+	plt.plot(np.real(y), np.imag(y), linewidth=2)
+	plt.xlabel(r"Re("+ylabel+")")
+	plt.ylabel(r"Im("+ylabel+")")
+	plt.title(" ")
+	plt.grid(which='major', axis='both')
+
 	plt.suptitle(addtitle)
 
+	plt.tight_layout()
 	
 
 if __name__=="__main__":
-	n_array = np.linspace(0, 10, 100)
+	print("Input value as x where interval is [-x, x]")
+	num = float(input())
+
+	n_array = np.arange(0, num, 0.001)
 	binet_array = binet(n_array)
 	complex_plot_(n_array, binet_array, "$n$", "$f(n)$", "Positive numbers")	
 	
-	n_array = np.linspace(-10, 0, 100)
+	n_array = np.arange(-num, 0, 0.001)
 	binet_array = binet(n_array)
-	complex_plot_(n_array, binet_array, "$n$", "$f(n)$", "Negative numbers")	
+	complex_plot_(n_array, binet_array, "$n$", "$f(n)$", "Negative numbers")
+
+	n_array = np.arange(-num, num, 0.001)
+	binet_array = binet(n_array)
+	complex_plot_(n_array, binet_array, "$n$", "$f(n)$")	
 	plt.show()
 	
 	
